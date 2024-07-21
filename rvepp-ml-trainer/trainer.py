@@ -5,11 +5,25 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-print('Initializing...')
-print('Training with LightGBM (Version ' + lgb.__version__ + ')')
+# Defaults
+model_file_name = 'elf.mdl'
+verbose_logging = False
+
+if verbose_logging:
+    print('Initializing...')
+    print('Training with LightGBM (Version ' + lgb.__version__ + ')')
 
 df = pd.read_csv('../DataSets/Synthetic/Test001.csv')
-df.head()
+
+if verbose_logging:
+    print('Printing Header...')
+    print(df.head())
+
+    print('Shape: ' + str(df.shape))
+
+    print(df.info())
+
+    print(df.describe())
 
 features = df.drop('is_malicious', axis=1)
 target = df['is_malicious']
@@ -29,7 +43,7 @@ params = {
 
 bst = lgb.train(params, train_data)
 
-bst.save_model('elf.mdl')
+bst.save_model(model_file_name)
 
 #lgb.plot_importance(bst, height=.5)
 
