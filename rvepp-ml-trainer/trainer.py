@@ -1,13 +1,18 @@
 import lightgbm as lgb
 import pandas as pd
+#import matplotlib as mpt
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+
+print('Initializing...')
+print('Training with LightGBM (Version ' + lgb.__version__ + ')')
 
 df = pd.read_csv('../DataSets/Synthetic/Test001.csv')
 df.head()
 
-features = df.drop('IsMalicious', axis=1)
-target = df['IsMalicious']
+features = df.drop('is_malicious', axis=1)
+target = df['is_malicious']
 
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
 
@@ -22,10 +27,11 @@ params = {
     'feature_fraction': 0.9
 }
 
-num_round = 100
-bst = lgb.train(params, train_data, num_round)
+bst = lgb.train(params, train_data)
 
 bst.save_model('elf.mdl')
+
+#lgb.plot_importance(bst, height=.5)
 
 y_pred = bst.predict(X_test, num_iteration=bst.best_iteration)
 
