@@ -1918,7 +1918,7 @@ is_packed=99
 parameters:
 [boosting: gbdt]
 [objective: binary]
-[metric: binary_logloss]
+[metric: auc]
 [tree_learner: serial]
 [device_type: cpu]
 [data_sample_strategy: bagging]
