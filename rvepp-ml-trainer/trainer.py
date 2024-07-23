@@ -13,7 +13,9 @@ if config.verbose_logging:
     print('Initializing...')
     print('Training with LightGBM (Version ' + lgb.__version__ + ')')
 
-df = pd.read_csv('../DataSets/Synthetic/Test001.csv')
+df = pd.read_csv(config.training_set_file_name)
+
+print('Read in (' + config.training_set_file_name + ') for training...')
 
 if config.verbose_logging:
     print('Printing Header...')
