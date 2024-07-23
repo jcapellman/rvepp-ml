@@ -5,25 +5,39 @@ from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import argparse
 
-# Instantiate the parser
-parser = argparse.ArgumentParser(description='Trainer Application for RVEPP')
+DEFAULT_MODEL_FILE_NAME = 'elf.mdl'
 
-model_file_name = 'elf.mdl'
 
-parser.add_argument('--verbose', action='store_false', help='Verbose logging')
-parser.add_argument('--modeloutput', action='store_const', const=model_file_name, default='elf.mdl', help='Output model file')
+class Config:
+    verbose_logging = False
+    model_file_name = DEFAULT_MODEL_FILE_NAME
 
-args = parser.parse_args()
+    def __init__(self, verbose_logging, model_file_name):
+        self.verbose_logging = verbose_logging
+        self.model_file_name = model_file_name
 
-verbose_logging = args.verbose
 
-if verbose_logging:
+def parse_arguments() -> Config:
+    # Instantiate the parser
+    parser = argparse.ArgumentParser(description='Trainer Application for RVEPP')
+
+    parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
+    parser.add_argument('-mo', '--modeloutput', type=str, default=DEFAULT_MODEL_FILE_NAME, help='Output model file')
+
+    args = parser.parse_args()
+
+    return Config(args.verbose, args.modeloutput)
+
+
+config = parse_arguments()
+
+if config.verbose_logging:
     print('Initializing...')
     print('Training with LightGBM (Version ' + lgb.__version__ + ')')
 
 df = pd.read_csv('../DataSets/Synthetic/Test001.csv')
 
-if verbose_logging:
+if config.verbose_logging:
     print('Printing Header...')
     print(df.head())
 
@@ -52,7 +66,9 @@ params = {
 
 bst = lgb.train(params, train_data)
 
-bst.save_model(model_file_name)
+print('Saving model to ' + config.model_file_name + '...')
+
+bst.save_model(config.model_file_name)
 
 lgb.plot_importance(bst, height=.5)
 plt.show()
