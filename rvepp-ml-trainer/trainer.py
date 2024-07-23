@@ -1,12 +1,21 @@
 import lightgbm as lgb
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, roc_auc_score as ras
+from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
+import argparse
 
-# Defaults
+# Instantiate the parser
+parser = argparse.ArgumentParser(description='Trainer Application for RVEPP')
+
 model_file_name = 'elf.mdl'
-verbose_logging = False
+
+parser.add_argument('--verbose', action='store_false', help='Verbose logging')
+parser.add_argument('--modeloutput', action='store_const', const=model_file_name, default='elf.mdl', help='Output model file')
+
+args = parser.parse_args()
+
+verbose_logging = args.verbose
 
 if verbose_logging:
     print('Initializing...')
