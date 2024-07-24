@@ -12,14 +12,29 @@ class DataSetConfig:
         self.test_size = test_size
         self.random_state = random_state
 
+    def __eq__(self, other):
+        if not isinstance(other, DataSetConfig):
+            return NotImplemented
+
+        return (self.classification_column == other.classification_column and self.test_size == other.test_size
+                and self.random_state == other.random_state)
+
 
 def load_config(file_name: str) -> DataSetConfig:
+    if not file_name:
+        raise ValueError("file_name parameter must be set")
+
     if not os.path.isfile(file_name):
         print('Dataset config file not found (' + file_name + '), using defaults...')
 
         return DataSetConfig()
 
     with open(file_name) as json_file:
-        data = json.load(json_file)
+        try:
+            data = json.load(json_file)
 
-        return DataSetConfig(**data)
+            return DataSetConfig(**data)
+        except ValueError as ve:
+            print("Dataset config file could not be loaded (due to: {ve}) , using defaults...")
+
+            return DataSetConfig()
