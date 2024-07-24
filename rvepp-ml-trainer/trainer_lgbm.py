@@ -1,7 +1,28 @@
+import json
+
 import lightgbm as lgb
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score
+
+
+class LGBMConfig:
+    metric: str = 'auc'
+    num_leaves: int = 5
+    learning_rate: float = 0.05
+    feature_fraction: float = 0.9
+
+    def __init__(self, metric, num_leaves, learning_rate, feature_fraction):
+        self.metric = metric
+        self.num_leaves = num_leaves
+        self.learning_rate = learning_rate
+        self.feature_fraction = feature_fraction
+
+
+def load_config(file_name: str) -> LGBMConfig:
+    with open(file_name, 'r') as f:
+        data = json.load(f)
+        return LGBMConfig(**data)
 
 
 def train_model(config, data_set):
