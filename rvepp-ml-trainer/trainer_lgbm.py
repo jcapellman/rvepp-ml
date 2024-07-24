@@ -16,7 +16,7 @@ def train_model(config, data_set):
     lgbm_config = load_config(config.lgbm_config_file_name)
 
     params = {
-        'boosting_type': 'gbdt', # for now this will remain gbdt
+        'boosting_type': 'gbdt',  # for now this will remain gbdt
         'objective': 'binary',  # for this problem set this will remain binary
         'metric': lgbm_config.metric,
         'num_leaves': lgbm_config.num_leaves,

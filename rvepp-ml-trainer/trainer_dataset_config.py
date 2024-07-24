@@ -35,6 +35,6 @@ def load_config(file_name: str) -> DataSetConfig:
 
             return DataSetConfig(**data)
         except ValueError as ve:
-            print("Dataset config file could not be loaded (due to: {ve}) , using defaults...")
+            print("Dataset config file could not be loaded (due to: " + str(ve) + "}) , using defaults...")
 
             return DataSetConfig()
