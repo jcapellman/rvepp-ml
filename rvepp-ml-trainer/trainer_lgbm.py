@@ -1,28 +1,10 @@
-import json
 
 import lightgbm as lgb
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score
 
-
-class LGBMConfig:
-    metric: str = 'auc'
-    num_leaves: int = 5
-    learning_rate: float = 0.05
-    feature_fraction: float = 0.9
-
-    def __init__(self, metric, num_leaves, learning_rate, feature_fraction):
-        self.metric = metric
-        self.num_leaves = num_leaves
-        self.learning_rate = learning_rate
-        self.feature_fraction = feature_fraction
-
-
-def load_config(file_name: str) -> LGBMConfig:
-    with open(file_name, 'r') as f:
-        data = json.load(f)
-        return LGBMConfig(**data)
+from trainer_lgbm_config import load_config
 
 
 def train_model(config, data_set):
@@ -31,13 +13,15 @@ def train_model(config, data_set):
     train_data = lgb.Dataset(data_set.x_train, label=data_set.y_train)
     test_data = lgb.Dataset(data_set.x_val, label=data_set.y_val, reference=train_data)
 
+    lgbm_config = load_config(config.lgbm_config_file_name)
+
     params = {
-        'boosting_type': 'gbdt',
-        'objective': 'binary',
-        'metric': 'auc',
-        'num_leaves': 5,
-        'learning_rate': 0.05,
-        'feature_fraction': 0.9,
+        'boosting_type': 'gbdt', # for now this will remain gbdt
+        'objective': 'binary',  # for this problem set this will remain binary
+        'metric': lgbm_config.metric,
+        'num_leaves': lgbm_config.num_leaves,
+        'learning_rate': lgbm_config.learning_rate,
+        'feature_fraction': lgbm_config.feature_fraction,
         "verbosity": 1 if config.verbose_logging else -1
     }
 
