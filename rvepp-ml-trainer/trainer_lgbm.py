@@ -26,8 +26,9 @@ def train_model(config, data_set):
 
     bst.save_model(config.model_file_name)
 
-    lgb.plot_importance(bst, height=.5)
-    plt.show()
+    if config.enable_plot:
+        lgb.plot_importance(bst, height=.5)
+        plt.show()
 
     y_pred = bst.predict(data_set.x_val, num_iteration=bst.best_iteration)
 
