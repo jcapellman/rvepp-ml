@@ -1,0 +1,2 @@
+DEFAULT_MODEL_FILE_NAME = 'elf.mdl'
+DEFAULT_TRAINING_SET_FILE_NAME = '../DataSets/Synthetic/Test001.csv'
