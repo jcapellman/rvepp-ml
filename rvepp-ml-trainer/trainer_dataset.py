@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 import trainer_dataset_config
+from trainer_config import Config
 
 
 class DataSet:
@@ -18,7 +19,7 @@ class DataSet:
         self.y_val = y_val
 
 
-def load_data_set(config) -> DataSet:
+def load_data_set(config: Config) -> DataSet:
     df = pd.read_csv(config.training_set_file_name)
 
     print('Read in Training Data Set (' + config.training_set_file_name + ')...')
