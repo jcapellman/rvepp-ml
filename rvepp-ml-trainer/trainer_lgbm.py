@@ -16,7 +16,8 @@ def train_model(config, data_set):
         'metric': 'auc',
         'num_leaves': 5,
         'learning_rate': 0.05,
-        'feature_fraction': 0.9
+        'feature_fraction': 0.9,
+        "verbosity": 1 if config.verbose_logging else -1
     }
 
     bst = lgb.train(params, train_data)
