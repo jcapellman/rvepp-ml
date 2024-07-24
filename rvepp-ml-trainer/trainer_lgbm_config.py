@@ -21,6 +21,6 @@ def load_config(file_name: str) -> LGBMConfig:
 
         return LGBMConfig()
 
-    with open(file_name, 'r') as f:
-        data = json.load(f)
+    with open(file_name) as json_file:
+        data = json.load(json_file)
         return LGBMConfig(**data)
