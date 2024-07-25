@@ -1,3 +1,5 @@
+from abc import abstractmethod
+
 from fe_config import Config
 
 
