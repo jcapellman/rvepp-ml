@@ -10,7 +10,7 @@ The focus initially will be on the trainer itself followed by the evaluator.
 
 # Components
 ## Feature Extractor
-TBD
+[![ML Feature Extractor Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/feature-extractor-app.yaml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/feature-extractor-app.yaml)
 
 ## Trainer
 [![ML Trainer Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/trainer-app.yml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/trainer-app.yml)
