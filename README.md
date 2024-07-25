@@ -8,5 +8,14 @@ The work is split into three components:
 
 The focus initially will be on the trainer itself followed by the evaluator.
 
+# Components
+## Data Generator
+TBD
+
 ## Trainer
 [![ML Trainer Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/trainer-app.yml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/trainer-app.yml)
+
+Application that accepts a dataset, parameters for the model and then trains the LightGBM model. Over time, the data source might expand to include other sources than a local csv.
+
+## Evaluator
+TBD
