@@ -12,6 +12,8 @@ The focus initially will be on the trainer itself followed by the evaluator.
 ## Feature Extractor
 [![ML Feature Extractor Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/feature-extractor-app.yaml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/feature-extractor-app.yaml)
 
+Application that supports synthetic and sample based feature extraction with configurable parameters. The output of this application is to be used with the trainer application.
+
 ## Trainer
 [![ML Trainer Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/trainer-app.yml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/trainer-app.yml)
 
