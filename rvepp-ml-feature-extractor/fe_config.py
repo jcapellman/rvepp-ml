@@ -13,8 +13,15 @@ class Config:
     extraction_type: ExtractionTypes = ExtractionTypes.SYNTHETIC
     output_file: str = DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
 
-    def __init__(self, verbose_logging, extraction_type, output_file):
+    def __init__(self, verbose_logging: bool, extraction_type: ExtractionTypes, output_file: str):
         self.verbose_logging = verbose_logging
+
+        if extraction_type is None:
+            raise ValueError('Extraction type must be specified')
+
+        if output_file is None:
+            raise ValueError('Output file must be specified')
+
         self.extraction_type = extraction_type
         self.output_file = output_file
 
