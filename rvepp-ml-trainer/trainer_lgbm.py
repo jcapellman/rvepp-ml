@@ -1,19 +1,18 @@
-
 import lightgbm as lgb
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score
 
-from trainer_lgbm_config import load_config
+from trainer_lgbm_config import LGBMConfig
 
 
 def train_model(config, data_set):
     print('Training with LightGBM (Version ' + lgb.__version__ + ')')
 
     train_data = lgb.Dataset(data_set.x_train, label=data_set.y_train)
-    test_data = lgb.Dataset(data_set.x_val, label=data_set.y_val, reference=train_data)
+    # test_data = lgb.Dataset(data_set.x_val, label=data_set.y_val, reference=train_data)
 
-    lgbm_config = load_config(config.lgbm_config_file_name)
+    lgbm_config = LGBMConfig.load_from_file(config.lgbm_config_file_name)
 
     params = {
         'boosting_type': 'gbdt',  # for now this will remain gbdt

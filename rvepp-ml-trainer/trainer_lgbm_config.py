@@ -1,5 +1,4 @@
-import json
-import os
+import trainer_common
 
 
 class LGBMConfig:
@@ -14,13 +13,6 @@ class LGBMConfig:
         self.learning_rate = learning_rate
         self.feature_fraction = feature_fraction
 
-
-def load_config(file_name: str) -> LGBMConfig:
-    if not os.path.exists(file_name):
-        print('LGBM Config file (' + file_name + ') does not exist, using defaults...')
-
-        return LGBMConfig()
-
-    with open(file_name) as json_file:
-        data = json.load(json_file)
-        return LGBMConfig(**data)
+    @staticmethod
+    def load_from_file(file_name: str):
+        return trainer_common.load_from_file(file_name, LGBMConfig)

@@ -1,28 +1,28 @@
 import unittest
 import json
 
-import trainer_dataset_config
+from trainer_dataset_config import DataSetConfig
 
 
 class DataSetConfigTests(unittest.TestCase):
     def test_load_config_null_arg(self):
         with self.assertRaises(ValueError):
-            trainer_dataset_config.load_config('')
+            DataSetConfig.load_from_file('')
 
     def test_load_config_invalid_path_arg(self):
-        self.assertEqual(trainer_dataset_config.DataSetConfig(), trainer_dataset_config.load_config('/testo'))
+        self.assertEqual(DataSetConfig(), DataSetConfig.load_from_file('/testo'))
 
     def test_load_config_bad_format_arg(self):
         with open('testo', 'w') as file:
             file.write('test')
 
-        self.assertEqual(trainer_dataset_config.DataSetConfig(), trainer_dataset_config.load_config('testo'))
+        self.assertEqual(DataSetConfig(), DataSetConfig.load_from_file('testo'))
 
     def test_load_config_valid_format_arg(self):
         with open('testo', 'w') as file:
-            file.write(json.dumps(trainer_dataset_config.DataSetConfig().__dict__))
+            file.write(json.dumps(DataSetConfig().__dict__))
 
-        self.assertEqual(trainer_dataset_config.DataSetConfig(), trainer_dataset_config.load_config('testo'))
+        self.assertEqual(DataSetConfig(), DataSetConfig.load_from_file('testo'))
 
 
 if __name__ == '__main__':

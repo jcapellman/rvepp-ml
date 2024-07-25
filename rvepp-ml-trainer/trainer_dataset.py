@@ -2,7 +2,7 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
-import trainer_dataset_config
+from trainer_dataset_config import DataSetConfig
 from trainer_config import Config
 
 
@@ -34,7 +34,7 @@ def load_data_set(config: Config) -> DataSet:
 
         print(df.describe())
 
-    training_set_config = trainer_dataset_config.load_config(config.training_set_config_file_name)
+    training_set_config = DataSetConfig.load_from_file(config.training_set_config_file_name)
 
     features = df.drop(training_set_config.classification_column, axis=1)
     target = df[training_set_config.classification_column]
