@@ -1,7 +1,7 @@
 import argparse
 from enum import Enum
 
-from fe_constants import DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
+from common_constants import DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
 
 
 class ExtractionTypes(Enum):

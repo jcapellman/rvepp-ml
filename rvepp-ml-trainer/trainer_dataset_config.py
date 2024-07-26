@@ -1,4 +1,5 @@
 import trainer_common
+import common_constants
 
 
 class DataSetConfig:
@@ -6,7 +7,7 @@ class DataSetConfig:
     test_size: float
     random_state: int
 
-    def __init__(self, classification_column='is_malicious', test_size=0.2, random_state=42):
+    def __init__(self, classification_column=common_constants.CLASSIFICATION_COLUMN, test_size=0.2, random_state=42):
         self.classification_column = classification_column
         self.test_size = test_size
         self.random_state = random_state
