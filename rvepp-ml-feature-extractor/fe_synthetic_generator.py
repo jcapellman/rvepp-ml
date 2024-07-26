@@ -2,7 +2,7 @@ import io
 import random
 
 from fe_config import Config
-from fe_extractor import Extractor
+from fe_extractor import Extractor, Feature
 
 
 class SyntheticDataGenerator(Extractor):
@@ -12,8 +12,6 @@ class SyntheticDataGenerator(Extractor):
         random.seed(1985)
 
         dataset_size = 1000
-
-        data_file.write('is_malicious,file_size,is_packed\n')
 
         for i in range(dataset_size):
             is_malicious = random.randint(0, 1)
@@ -33,6 +31,8 @@ class SyntheticDataGenerator(Extractor):
                 else:
                     is_packed = 0
 
-            data_file.writelines(str(is_malicious) + ',' + str(file_size) + ',' + str(is_packed) + '\n')
+            super().write_row(data_file, Feature(is_malicious, file_size, is_packed))
+
+        data_file.close()
 
         return True
