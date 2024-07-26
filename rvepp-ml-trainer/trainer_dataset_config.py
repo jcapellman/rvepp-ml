@@ -1,4 +1,4 @@
-import trainer_common
+from common_json_file_loader import load_from_file
 import common_constants
 
 
@@ -21,4 +21,4 @@ class DataSetConfig:
 
     @staticmethod
     def load_from_file(file_name: str):
-        return trainer_common.load_from_file(file_name, DataSetConfig)
+        return load_from_file(file_name, DataSetConfig)

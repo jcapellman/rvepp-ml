@@ -3,6 +3,7 @@ import argparse
 import trainer_constants
 import common_constants
 
+
 class Config:
     verbose_logging: bool = False
     model_file_name: str = trainer_constants.DEFAULT_MODEL_FILE_NAME
