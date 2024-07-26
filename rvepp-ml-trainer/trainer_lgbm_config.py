@@ -1,4 +1,4 @@
-import trainer_common
+from common_json_file_loader import load_from_file
 
 
 class LGBMConfig:
@@ -15,4 +15,4 @@ class LGBMConfig:
 
     @staticmethod
     def load_from_file(file_name: str):
-        return trainer_common.load_from_file(file_name, LGBMConfig)
+        return load_from_file(file_name, LGBMConfig)
