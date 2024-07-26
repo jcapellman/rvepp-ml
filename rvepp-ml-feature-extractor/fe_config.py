@@ -1,12 +1,14 @@
 import argparse
+import json
+
 from enum import Enum
 
 from common_constants import DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
 from fe_constants import DEFAULT_EXTRACTION_CONFIG_FILE_NAME
 
 
-class ExtractionTypes(Enum):
-    SYNTHETIC = 1
+class ExtractionTypes(str, Enum):
+    SYNTHETIC = 'Synthetic'
 
 
 class Config:
@@ -31,6 +33,9 @@ class Config:
         self.extraction_type = extraction_type
         self.output_file = output_file
         self.extraction_config_file_name = extraction_config_file_name
+
+    def to_json(self) -> str:
+        return json.dumps(vars(self))
 
 
 def parse_arguments() -> Config:
