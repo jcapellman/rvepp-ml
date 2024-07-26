@@ -2,6 +2,7 @@ import argparse
 from enum import Enum
 
 from common_constants import DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
+from fe_constants import DEFAULT_EXTRACTION_CONFIG_FILE_NAME
 
 
 class ExtractionTypes(Enum):
@@ -12,8 +13,10 @@ class Config:
     verbose_logging: bool = False
     extraction_type: ExtractionTypes = ExtractionTypes.SYNTHETIC
     output_file: str = DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
+    extraction_config_file_name: str = DEFAULT_EXTRACTION_CONFIG_FILE_NAME
 
-    def __init__(self, verbose_logging: bool, extraction_type: ExtractionTypes, output_file: str):
+    def __init__(self, verbose_logging: bool, extraction_type: ExtractionTypes, output_file: str,
+                 extraction_config_file_name: str):
         self.verbose_logging = verbose_logging
 
         if extraction_type is None:
@@ -22,8 +25,12 @@ class Config:
         if output_file is None:
             raise ValueError('Output file must be specified')
 
+        if extraction_config_file_name is None:
+            raise ValueError('Extraction configuration file name must be specified')
+
         self.extraction_type = extraction_type
         self.output_file = output_file
+        self.extraction_config_file_name = extraction_config_file_name
 
 
 def parse_arguments() -> Config:
@@ -36,7 +43,10 @@ def parse_arguments() -> Config:
     parser.add_argument('-o', '--outputfile', type=str,
                         default=DEFAULT_EXTRACTION_OUTPUT_FILE_NAME,
                         help='Extraction output file')
+    parser.add_argument('-c', '--configfile', type=str,
+                        default=DEFAULT_EXTRACTION_CONFIG_FILE_NAME,
+                        help='JSON configuration for the extraction type')
 
     args = parser.parse_args()
 
-    return Config(args.verbose, args.extractiontype, args.outputfile)
+    return Config(args.verbose, args.extractiontype, args.outputfile, args.configfile)
