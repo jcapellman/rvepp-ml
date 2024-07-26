@@ -11,7 +11,7 @@ permissions:
 
 defaults:
   run:
-    working-directory: rvepp-ml-feature-extractor/
+    working-directory: rvepp_ml_feature_extractor/
     
 jobs:
   build:
@@ -32,8 +32,8 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      working-directory: rvepp-ml-feature-extractor/
+      working-directory: rvepp_ml_feature_extractor/
     - name: Test with pytest
       run: |
         pytest
-      working-directory: rvepp-ml-feature-extractor/tests/
+      working-directory: rvepp_ml_feature_extractor/tests/
