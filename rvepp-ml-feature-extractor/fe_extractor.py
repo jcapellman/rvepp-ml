@@ -16,12 +16,13 @@ class Feature:
         self.file_size = file_size
         self.is_packed = is_packed
 
+    def to_json(self):
+        return json.dumps(vars(self))
+
 
 class Extractor:
     def write_row(self, data_file, row_object: Feature):
-        json_str = json.dumps(row_object)
-
-        data_file.writelines(json_str + os.linesep)
+        data_file.writelines(row_object.to_json() + os.linesep)
 
     @abstractmethod
     def run_extraction(self, config: Config) -> bool:
