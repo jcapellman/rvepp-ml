@@ -1,6 +1,6 @@
 import unittest
 
-from fe_config import Config
+from ..fe_config import Config
 
 
 class ConfigTests(unittest.TestCase):
