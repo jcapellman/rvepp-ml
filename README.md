@@ -20,4 +20,5 @@ Application that supports synthetic and sample based feature extraction with con
 Application that accepts a dataset, parameters for the model and then trains the LightGBM model. Over time, the data source might expand to include other sources than a local csv.
 
 ## Evaluator
-TBD
+
+Application that accepts a trained model and a testing data set, in which model metrics are performed.
