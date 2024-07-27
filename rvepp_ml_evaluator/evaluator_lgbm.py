@@ -2,11 +2,11 @@ import os
 import lightgbm as lgb
 import pandas as pd
 
-from numpy import array
+from evaluator_metrics import ModelMetrics
 from evaluator_config import Config
 from sklearn.metrics import accuracy_score
 
-def run_evaluation(config: Config):
+def run_evaluation(config: Config) -> ModelMetrics:
     if not os.path.isfile(config.model_file_name):
         raise ValueError('Model file (' + config.model_file_name + ') does not exist, exiting...')
 
@@ -22,4 +22,5 @@ def run_evaluation(config: Config):
     y_pred_binary = [1 if pred > 0.5 else 0 for pred in y_pred]
 
     accuracy = accuracy_score(df.y_val, y_pred_binary)
-    print(f'Test Set Accuracy: {accuracy}')
+
+    return ModelMetrics(accuracy)
