@@ -11,6 +11,12 @@ class Config:
     testing_data_file_name: str = DEFAULT_TESTING_DATA_FILE_NAME
 
     def __init__(self, verbose_logging: bool, model_file_name: str, testing_data_file_name: str):
+        if model_file_name == '':
+            raise ValueError('model_file_name cannot be None')
+
+        if testing_data_file_name == '':
+            raise ValueError('testing_data_file_name cannot be None')
+
         self.verbose_logging = verbose_logging
         self.model_file_name = model_file_name
         self.testing_data_file_name = testing_data_file_name
