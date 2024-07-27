@@ -4,7 +4,7 @@ import json
 from enum import Enum
 
 from rvepp_ml_common.common_constants import DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
-from fe_constants import DEFAULT_EXTRACTION_CONFIG_FILE_NAME
+from rvepp_ml_feature_extractor.fe_constants import DEFAULT_EXTRACTION_CONFIG_FILE_NAME
 
 
 class ExtractionTypes(str, Enum):
