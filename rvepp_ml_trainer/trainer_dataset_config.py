@@ -1,5 +1,5 @@
-from common_json_file_loader import load_from_file
-import common_constants
+from rvepp_ml_common.common_json_file_loader import load_from_file
+from rvepp_ml_common.common_constants import CLASSIFICATION_COLUMN
 
 
 class DataSetConfig:
@@ -7,7 +7,7 @@ class DataSetConfig:
     test_size: float
     random_state: int
 
-    def __init__(self, classification_column=common_constants.CLASSIFICATION_COLUMN, test_size=0.2, random_state=42):
+    def __init__(self, classification_column=CLASSIFICATION_COLUMN, test_size=0.2, random_state=42):
         self.classification_column = classification_column
         self.test_size = test_size
         self.random_state = random_state

@@ -1,7 +1,7 @@
 import unittest
 import json
 
-from trainer_dataset_config import DataSetConfig
+from ..trainer_dataset_config import DataSetConfig
 
 
 class DataSetConfigTests(unittest.TestCase):
