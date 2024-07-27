@@ -1,8 +1,6 @@
 import lightgbm as lgb
 import matplotlib.pyplot as plt
 
-from sklearn.metrics import accuracy_score
-
 from trainer_lgbm_config import LGBMConfig
 
 
@@ -33,10 +31,3 @@ def train_model(config, data_set):
     if config.enable_plot:
         lgb.plot_importance(bst, height=.5)
         plt.show()
-
-    y_pred = bst.predict(data_set.x_val, num_iteration=bst.best_iteration)
-
-    y_pred_binary = [1 if pred > 0.5 else 0 for pred in y_pred]
-
-    accuracy = accuracy_score(data_set.y_val, y_pred_binary)
-    print(f'Test Set Accuracy: {accuracy}')
