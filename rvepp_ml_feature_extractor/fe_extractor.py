@@ -11,7 +11,7 @@ class Feature:
     file_size: int
     is_packed: bool
 
-    def __init__(self, is_malicious, file_size, is_packed):
+    def __init__(self, is_malicious: bool, file_size: int, is_packed: bool):
         self.is_malicious = is_malicious
         self.file_size = file_size
         self.is_packed = is_packed
