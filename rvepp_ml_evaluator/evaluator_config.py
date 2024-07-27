@@ -1,13 +1,13 @@
 import argparse
 import json
 
-import common_constants
-from evaluator_constants import DEFAULT_TESTING_DATA_FILE_NAME, DEFAULT_METRICS_OUTPUT_FILE_NAME
+from rvepp_ml_common.common_constants import DEFAULT_MODEL_FILE_NAME
+from rvepp_ml_evaluator.evaluator_constants import DEFAULT_TESTING_DATA_FILE_NAME, DEFAULT_METRICS_OUTPUT_FILE_NAME
 
 
 class Config:
     verbose_logging: bool = False
-    model_file_name: str = common_constants.DEFAULT_MODEL_FILE_NAME
+    model_file_name: str = DEFAULT_MODEL_FILE_NAME
     testing_data_file_name: str = DEFAULT_TESTING_DATA_FILE_NAME
     metrics_output_file_name: str = DEFAULT_METRICS_OUTPUT_FILE_NAME
 
@@ -32,7 +32,7 @@ def parse_arguments() -> Config:
 
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     parser.add_argument('-mi', '--modelinput', type=str,
-                        default=common_constants.DEFAULT_MODEL_FILE_NAME,
+                        default=DEFAULT_MODEL_FILE_NAME,
                         help='Input model file')
     parser.add_argument('-td', '--testdata', type=str,
                         default=DEFAULT_TESTING_DATA_FILE_NAME,
