@@ -17,7 +17,7 @@ class SyntheticDataGenerator(Extractor):
         for i in range(data_config.dataset_size):
             is_malicious = bool(random.randint(0, 1))
 
-            if is_malicious == 0:
+            if is_malicious is True:
                 file_size = random.randint(200, 2000)
 
                 if file_size > 1500:

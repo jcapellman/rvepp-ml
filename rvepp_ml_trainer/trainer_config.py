@@ -6,7 +6,7 @@ import common_constants
 
 class Config:
     verbose_logging: bool = False
-    model_file_name: str = trainer_constants.DEFAULT_MODEL_FILE_NAME
+    model_file_name: str = common_constants.DEFAULT_MODEL_FILE_NAME
     training_set_file_name: str = common_constants.DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
     training_set_config_file_name: str = trainer_constants.DEFAULT_TRAINING_SET_CONFIG_FILE_NAME
     lgbm_config_file_name: str = trainer_constants.DEFAULT_LGBM_CONFIG_FILE_NAME
@@ -28,7 +28,7 @@ def parse_arguments() -> Config:
 
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     parser.add_argument('-mo', '--modeloutput', type=str,
-                        default=trainer_constants.DEFAULT_MODEL_FILE_NAME,
+                        default=common_constants.DEFAULT_MODEL_FILE_NAME,
                         help='Output model file')
     parser.add_argument('-ts', '--trainingset', type=str,
                         default=common_constants.DEFAULT_EXTRACTION_OUTPUT_FILE_NAME,
