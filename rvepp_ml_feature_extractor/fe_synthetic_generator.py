@@ -1,5 +1,4 @@
 import io
-import os
 import random
 
 from fe_config import Config
