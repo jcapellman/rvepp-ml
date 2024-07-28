@@ -1,5 +1,6 @@
 from rvepp_ml_evaluator.evaluator_config import parse_arguments, Config
 from rvepp_ml_evaluator.evaluator_lgbm import run_evaluation
+from rvepp_ml_evaluator.evaluator_shap import run_shap
 
 
 def main():
@@ -17,6 +18,9 @@ def main():
     model_metrics.save_to_disk(config)
 
     print('Model Metrics were saved to ' + config.metrics_output_file_name)
+
+    print('Running Shap...')
+    run_shap(config)
 
 
 if __name__ == '__main__':
