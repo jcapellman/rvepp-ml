@@ -3,6 +3,7 @@ import json
 
 from evaluator_config import Config
 
+
 class ModelMetrics:
     accuracy: float
 

@@ -6,6 +6,7 @@ from evaluator_metrics import ModelMetrics
 from evaluator_config import Config
 from sklearn.metrics import accuracy_score
 
+
 def run_evaluation(config: Config) -> ModelMetrics:
     if not os.path.isfile(config.model_file_name):
         raise ValueError('Model file (' + config.model_file_name + ') does not exist, exiting...')
