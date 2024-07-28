@@ -1,4 +1,4 @@
-from common_json_file_loader import load_from_file
+from rvepp_ml_common.common_json_file_loader import load_from_file
 
 
 class LGBMConfig:

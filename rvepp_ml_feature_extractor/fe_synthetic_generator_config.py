@@ -1,4 +1,4 @@
-from common_json_file_loader import load_from_file
+from rvepp_ml_common.common_json_file_loader import load_from_file
 
 DEFAULT_SEED_VALUE: int = 1985
 DEFAULT_DATASET_SIZE: int = 2003
