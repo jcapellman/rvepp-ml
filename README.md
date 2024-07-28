@@ -20,6 +20,6 @@ Application that supports synthetic and sample based feature extraction with con
 Application that accepts a dataset, parameters for the model and then trains the LightGBM model. Over time, the data source might expand to include other sources than a local csv.
 
 ## Evaluator
-https://github.com/jcapellman/rvepp-ml/actions/workflows/evaluator-app.yml/badge.svg
+[![ML Evaluator Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/evaluator-app.yml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/evaluator-app.yml)
 
 Application that accepts a trained model and a testing data set, in which model metrics are performed.
