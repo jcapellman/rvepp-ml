@@ -1,7 +1,7 @@
 import io
 import json
 
-from evaluator_config import Config
+from rvepp_ml_evaluator.evaluator_config import Config
 
 
 class ModelMetrics:

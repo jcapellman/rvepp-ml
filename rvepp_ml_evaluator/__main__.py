@@ -1,17 +1,23 @@
-from evaluator_config import parse_arguments, Config
-from evaluator_lgbm import run_evaluation
+from rvepp_ml_evaluator.evaluator_config import parse_arguments, Config
+from rvepp_ml_evaluator.evaluator_lgbm import run_evaluation
 
-config: Config = parse_arguments()
 
-print('RVEPP-ML Evaluator (2024.7.0)')
+def main():
+    config: Config = parse_arguments()
 
-if config.verbose_logging:
-    print('Using the following config: ' + config.to_json())
+    print('RVEPP-ML Evaluator (2024.7.0)')
 
-print('Running the LightGBM evaluator...')
+    if config.verbose_logging:
+        print('Using the following config: ' + config.to_json())
 
-model_metrics = run_evaluation(config)
+    print('Running the LightGBM evaluator...')
 
-model_metrics.save_to_disk(config)
+    model_metrics = run_evaluation(config)
 
-print('Model Metrics were saved to ' + config.metrics_output_file_name)
+    model_metrics.save_to_disk(config)
+
+    print('Model Metrics were saved to ' + config.metrics_output_file_name)
+
+
+if __name__ == '__main__':
+    main()

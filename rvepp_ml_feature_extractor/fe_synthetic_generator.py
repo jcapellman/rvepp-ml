@@ -1,9 +1,9 @@
 import io
 import random
 
-from fe_config import Config
-from fe_extractor import Extractor, Feature
-from fe_synthetic_generator_config import SyntheticGeneratorConfig
+from rvepp_ml_feature_extractor.fe_config import Config
+from rvepp_ml_feature_extractor.fe_extractor import Extractor, Feature
+from rvepp_ml_feature_extractor.fe_synthetic_generator_config import SyntheticGeneratorConfig
 
 
 class SyntheticDataGenerator(Extractor):

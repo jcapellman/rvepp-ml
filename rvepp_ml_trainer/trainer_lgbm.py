@@ -1,7 +1,7 @@
 import lightgbm as lgb
 import matplotlib.pyplot as plt
 
-from trainer_lgbm_config import LGBMConfig
+from rvepp_ml_trainer.trainer_lgbm_config import LGBMConfig
 
 
 def train_model(config, data_set):

@@ -3,7 +3,7 @@ import os
 
 from abc import abstractmethod
 
-from fe_config import Config
+from rvepp_ml_feature_extractor.fe_config import Config
 
 
 class Feature:

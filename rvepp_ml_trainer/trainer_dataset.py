@@ -2,8 +2,8 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
-from trainer_dataset_config import DataSetConfig
-from trainer_config import Config
+from rvepp_ml_trainer.trainer_dataset_config import DataSetConfig
+from rvepp_ml_trainer.trainer_config import Config
 
 
 class DataSet:

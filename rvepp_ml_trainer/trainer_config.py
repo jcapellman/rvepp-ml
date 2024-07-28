@@ -1,6 +1,6 @@
 import argparse
 
-import trainer_constants
+from rvepp_ml_trainer.trainer_constants import DEFAULT_TRAINING_SET_CONFIG_FILE_NAME, DEFAULT_LGBM_CONFIG_FILE_NAME
 from rvepp_ml_common.common_constants import DEFAULT_MODEL_FILE_NAME, DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
 
 
@@ -8,8 +8,8 @@ class Config:
     verbose_logging: bool = False
     model_file_name: str = DEFAULT_MODEL_FILE_NAME
     training_set_file_name: str = DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
-    training_set_config_file_name: str = trainer_constants.DEFAULT_TRAINING_SET_CONFIG_FILE_NAME
-    lgbm_config_file_name: str = trainer_constants.DEFAULT_LGBM_CONFIG_FILE_NAME
+    training_set_config_file_name: str = DEFAULT_TRAINING_SET_CONFIG_FILE_NAME
+    lgbm_config_file_name: str = DEFAULT_LGBM_CONFIG_FILE_NAME
     enable_plot: bool = False
 
     def __init__(self, verbose_logging, model_file_name, training_set_file_name, enable_plot, lgbm_config_file_name,
@@ -36,10 +36,10 @@ def parse_arguments() -> Config:
     parser.add_argument('-ep', '--enableplot', action='store_true',
                         help='Enables the plotting of feature importance')
     parser.add_argument('-lc', '--lgbmconfig', type=str,
-                        default=trainer_constants.DEFAULT_LGBM_CONFIG_FILE_NAME,
+                        default=DEFAULT_LGBM_CONFIG_FILE_NAME,
                         help='LGBM JSON config file')
     parser.add_argument('-dc', '--datasetconfig', type=str,
-                        default=trainer_constants.DEFAULT_TRAINING_SET_CONFIG_FILE_NAME,
+                        default=DEFAULT_TRAINING_SET_CONFIG_FILE_NAME,
                         help='Training DataSet JSON config file')
 
     args = parser.parse_args()

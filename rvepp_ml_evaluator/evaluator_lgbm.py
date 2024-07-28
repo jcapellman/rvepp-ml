@@ -3,8 +3,8 @@ import lightgbm as lgb
 import pandas as pd
 
 from datetime import datetime
-from evaluator_metrics import ModelMetrics
-from evaluator_config import Config
+from rvepp_ml_evaluator.evaluator_metrics import ModelMetrics
+from rvepp_ml_evaluator.evaluator_config import Config
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from rvepp_ml_common.common_constants import CLASSIFICATION_COLUMN
 
