@@ -14,6 +14,9 @@ To test the entire workflow end to end from synthetic data generation to model t
 Running Tuna or another package to visualize the metrics saved to the model_metrics.json would be the only next step.
 
 # Components
+Overall CodeQL Status:
+[![CodeQL](https://github.com/jcapellman/rvepp-ml/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/github-code-scanning/codeql)
+
 ## Feature Extractor
 [![ML Feature Extractor Application](https://github.com/jcapellman/rvepp-ml/actions/workflows/feature-extractor-app.yaml/badge.svg)](https://github.com/jcapellman/rvepp-ml/actions/workflows/feature-extractor-app.yaml)
 
