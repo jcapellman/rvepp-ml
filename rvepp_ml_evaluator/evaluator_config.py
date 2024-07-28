@@ -13,13 +13,13 @@ class Config:
 
     def __init__(self, verbose_logging: bool, model_file_name: str, testing_data_file_name: str,
                  metrics_output_file_name: str):
-        if model_file_name == '':
+        if not model_file_name:
             raise ValueError('model_file_name cannot be None')
 
-        if testing_data_file_name == '':
+        if not testing_data_file_name:
             raise ValueError('testing_data_file_name cannot be None')
 
-        if metrics_output_file_name == '':
+        if not metrics_output_file_name:
             raise ValueError('metrics_output_file_name cannot be None')
 
         self.verbose_logging = verbose_logging
