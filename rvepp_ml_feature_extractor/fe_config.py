@@ -13,13 +13,15 @@ class ExtractionTypes(str, Enum):
 
 class Config:
     verbose_logging: bool = False
+    profiler_mode: bool = False
     extraction_type: ExtractionTypes = ExtractionTypes.SYNTHETIC
     output_file: str = DEFAULT_EXTRACTION_OUTPUT_FILE_NAME
     extraction_config_file_name: str = DEFAULT_EXTRACTION_CONFIG_FILE_NAME
 
-    def __init__(self, verbose_logging: bool, extraction_type: ExtractionTypes, output_file: str,
+    def __init__(self, verbose_logging: bool, profiler_mode: bool, extraction_type: ExtractionTypes, output_file: str,
                  extraction_config_file_name: str):
         self.verbose_logging = verbose_logging
+        self.profiler_mode = profiler_mode
 
         if extraction_type is None:
             raise ValueError('Extraction type must be specified')
@@ -42,6 +44,7 @@ def parse_arguments() -> Config:
     parser = argparse.ArgumentParser(description='Feature Extraction Application for RVEPP')
 
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
+    parser.add_argument('-p', '--profiler', action='store_true', help='Enable profiler mode')
     parser.add_argument('-t', '--extractiontype', type=ExtractionTypes,
                         default=ExtractionTypes.SYNTHETIC,
                         help='Extraction type')
@@ -54,4 +57,4 @@ def parse_arguments() -> Config:
 
     args = parser.parse_args()
 
-    return Config(args.verbose, args.extractiontype, args.outputfile, args.configfile)
+    return Config(args.verbose, args.profiler, args.extractiontype, args.outputfile, args.configfile)
