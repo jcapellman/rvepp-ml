@@ -21,7 +21,7 @@ class Config:
 
         if metrics_output_file_name == '':
             raise ValueError('metrics_output_file_name cannot be None')
-        
+
         self.verbose_logging = verbose_logging
         self.model_file_name = model_file_name
         self.testing_data_file_name = testing_data_file_name
