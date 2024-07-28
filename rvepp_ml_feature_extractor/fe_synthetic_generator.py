@@ -13,7 +13,7 @@ class SyntheticDataGenerator(Extractor):
 
         data_file = io.open(config.output_file, mode='w')
 
-        data_file.writelines('is_malicious, file_size, is_packed' + os.linesep)
+        super().write_header_row(data_file, Feature(True, 1, True))
 
         random.seed(data_config.seed_value)
 
