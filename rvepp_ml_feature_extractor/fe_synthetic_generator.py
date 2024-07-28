@@ -1,4 +1,5 @@
 import io
+import os
 import random
 
 from fe_config import Config
@@ -11,6 +12,8 @@ class SyntheticDataGenerator(Extractor):
         data_config = SyntheticGeneratorConfig.load_from_file(config.extraction_config_file_name)
 
         data_file = io.open(config.output_file, mode='w')
+
+        data_file.writelines('is_malicious, file_size, is_packed' + os.linesep)
 
         random.seed(data_config.seed_value)
 
