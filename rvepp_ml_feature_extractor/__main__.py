@@ -5,6 +5,7 @@ from rvepp_ml_evaluator.evaluator_constants import DEFAULT_TESTING_DATA_FILE_NAM
 from rvepp_ml_feature_extractor.fe_config import parse_arguments, ExtractionTypes, Config
 from rvepp_ml_feature_extractor.fe_synthetic_generator import SyntheticDataGenerator
 from rvepp_ml_feature_extractor.fe_constants import PROFILER_OUTPUT_FILE_NAME
+from rvepp_ml_feature_extractor.fe_elf_extractor import ElfExtractor
 
 
 def main():
@@ -35,6 +36,8 @@ def run(config: Config):
         match config.extraction_type:
             case ExtractionTypes.SYNTHETIC:
                 SyntheticDataGenerator().run_extraction(config)
+            case ExtractionTypes.ELFPARSER:
+                ElfExtractor().run_extraction(config)
 
 
 if __name__ == '__main__':

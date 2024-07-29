@@ -9,6 +9,7 @@ from rvepp_ml_feature_extractor.fe_constants import DEFAULT_EXTRACTION_CONFIG_FI
 
 class ExtractionTypes(str, Enum):
     SYNTHETIC = 'Synthetic'
+    ELFPARSER = 'ELFParser'
 
 
 class Config:
