@@ -3,18 +3,21 @@ import os
 import io
 
 from rvepp_ml_feature_extractor.fe_config import Config
+from rvepp_ml_feature_extractor.fe_elf_extractor_config import ElfExtractorConfig
 from rvepp_ml_feature_extractor.fe_extractor import Extractor, Feature
 from elftools.elf.elffile import ELFFile
 
 
 class ElfExtractor(Extractor):
     def run_extraction(self, config: Config) -> bool:
-        if not os.path.exists('samples/'):
-            print('Path does not exist...')
+        data_config = ElfExtractorConfig.load_from_file(config.extraction_config_file_name)
+
+        if not os.path.exists(data_config.sample_path):
+            print('Path (' + data_config.sample_path + ') does not exist...')
 
             return False
 
-        files =  glob.glob('samples/')
+        files = glob.glob(data_config.sample_path)
 
         if len(files) == 0:
             print('No samples found')
@@ -43,6 +46,6 @@ class ElfExtractor(Extractor):
 
         data_file.close()
 
-        print('Generated a ELF Extracted Data Set to ' + config.output_file)
+        print('Generated a ELF Extracted Data Set from (' + data_config.sample_path + ') to ' + config.output_file)
 
         return True
