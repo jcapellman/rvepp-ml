@@ -47,7 +47,7 @@ def parse_arguments() -> Config:
     parser.add_argument('-v', '--verbose', action='store_true', help='Verbose logging')
     parser.add_argument('-p', '--profiler', action='store_true', help='Enable profiler mode')
     parser.add_argument('-t', '--extractiontype', type=ExtractionTypes,
-                        default=ExtractionTypes.SYNTHETIC,
+                        default=ExtractionTypes.ELFPARSER,
                         help='Extraction type')
     parser.add_argument('-o', '--outputfile', type=str,
                         default=DEFAULT_EXTRACTION_OUTPUT_FILE_NAME,

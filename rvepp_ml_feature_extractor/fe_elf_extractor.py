@@ -9,15 +9,30 @@ from elftools.elf.elffile import ELFFile
 
 class ElfExtractor(Extractor):
     def run_extraction(self, config: Config) -> bool:
+        if not os.path.exists('samples/'):
+            print('Path does not exist...')
+
+            return False
+
+        files =  glob.glob('samples/')
+
+        if len(files) == 0:
+            print('No samples found')
+
+            return False
+
         data_file = io.open(config.output_file, mode='w')
 
         super().write_header_row(data_file, Feature(True, 1, True))
 
-        files =  glob.glob('samples/')
-
         for filename in files:
             with open(filename, 'rb') as f:
-                # elffile = ELFFile(f)
+                elffile = ELFFile(f)
+
+                if elffile is None:
+                    print(filename + ' was not an ELF file, ignoring...')
+
+                    continue
 
                 content = f.read()
 
