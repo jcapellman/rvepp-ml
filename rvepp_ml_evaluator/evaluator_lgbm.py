@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import datetime
 from rvepp_ml_evaluator.evaluator_metrics import ModelMetrics
 from rvepp_ml_evaluator.evaluator_config import Config
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 from rvepp_ml_common.common_constants import CLASSIFICATION_COLUMN
 
 
@@ -34,7 +34,8 @@ def run_evaluation(config: Config) -> ModelMetrics:
     precision = precision_score(y_test, y_pred_binary)
     recall = recall_score(y_test, y_pred_binary)
     f1 = f1_score(y_test, y_pred_binary)
+    roc_auc = roc_auc_score(y_test, y_pred_binary)
 
     total_time = datetime.now() - start_time
 
-    return ModelMetrics(accuracy, precision, recall, f1, total_time.total_seconds())
+    return ModelMetrics(accuracy, precision, recall, f1, roc_auc, total_time.total_seconds())
