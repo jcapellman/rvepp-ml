@@ -12,7 +12,8 @@ class ModelMetrics:
     roc_auc: float
     duration_seconds: float
 
-    def __init__(self, accuracy: float, precision: float, recall: float, f_score: float, roc_auc: float, duration_seconds: float):
+    def __init__(self, accuracy: float, precision: float, recall: float, f_score: float, roc_auc: float,
+                 duration_seconds: float):
         self.accuracy = accuracy
         self.precision = precision
         self.recall = recall
