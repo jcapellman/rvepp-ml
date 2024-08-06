@@ -8,7 +8,6 @@ def train_model(config, data_set):
     print('Training with LightGBM (Version ' + lgb.__version__ + ')')
 
     train_data = lgb.Dataset(data_set.x_train, label=data_set.y_train)
-    # test_data = lgb.Dataset(data_set.x_val, label=data_set.y_val, reference=train_data)
 
     lgbm_config = LGBMConfig.load_from_file(config.lgbm_config_file_name)
 
