@@ -30,8 +30,6 @@ def load_data_set(config: Config) -> DataSet:
 
         print('Shape: ' + str(df.shape))
 
-        print(df.info())
-
         print(df.describe())
 
     training_set_config = DataSetConfig.load_from_file(config.training_set_config_file_name)
