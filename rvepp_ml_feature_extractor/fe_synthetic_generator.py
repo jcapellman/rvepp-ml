@@ -14,23 +14,25 @@ class SyntheticDataGenerator(Extractor):
 
         super().write_header_row(data_file, Feature(True, 1, True))
 
-        random.seed(data_config.seed_value)
+        system_random = random.SystemRandom()
 
-        for _ in range(data_config.dataset_size):
-            is_malicious = bool(random.randint(0, 1))
+        system_random.seed(data_config.seed_value)
+
+        for i in range(data_config.dataset_size):
+            is_malicious = bool(system_random.randint(0, 1))
 
             if is_malicious is True:
-                file_size = random.randint(200, 2000)
+                file_size = system_random.randint(200, 2000)
 
                 if file_size > 1500:
-                    is_packed = bool(random.randint(0, 1))
+                    is_packed = bool(system_random.randint(0, 1))
                 else:
                     is_packed = True
             else:
-                file_size = random.randint(1000, 10000)
+                file_size = system_random.randint(1000, 10000)
 
                 if file_size > 2500:
-                    is_packed = bool(random.randint(0, 1))
+                    is_packed = bool(system_random.randint(0, 1))
                 else:
                     is_packed = False
 
