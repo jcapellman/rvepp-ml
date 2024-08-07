@@ -18,7 +18,7 @@ class SyntheticDataGenerator(Extractor):
 
         system_random.seed(data_config.seed_value)
 
-        for i in range(data_config.dataset_size):
+        for _ in range(data_config.dataset_size):
             is_malicious = bool(system_random.randint(0, 1))
 
             if is_malicious is True:
